@@ -1,0 +1,33 @@
+<!-- Login and register pages 
+Reactive form validation 
+-->
+
+<section>
+    <div class="container my-5">
+        <form (ngSubmit)="login()" [formGroup]="data" #regForm="ngForm">
+            <!-- data varialethat stores the data of that form  -->
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Email address</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp" formControlName="email" required [ngClass]="submit && form.email.errors? ' border border-danger':''">
+              <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+               <p class="text-danger fw-bold" *ngIf="submit && form.email.errors">Enter the email</p>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Password</label>
+              <input type="password" class="form-control" id="exampleInputPassword1" name="pass" formControlName="password" required [ngClass]="submit && form.password.errors? ' border border-danger':''">
+              <!-- ngClass tenary operator apply to apply  aclass that appliess the color of the border -->
+              <p class="text-danger fw-bold" *ngIf="submit && form.password.errors">Enter the password</p>
+            </div>
+            <div class="mb-3 form-check">
+              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            </div>
+            <button type="submit" class="btn btn-primary" [disabled]="data.invalid">Submit</button>
+            <p class="fw-bold" [ngClass]="clr">{{msg}}</p>
+            <!-- data.invalid or regForm.invalid both are same function and #regForm no need to use  -->
+            <div class="card-footer text-center">
+                <small>If you don't  have an account <a routerLink="/home/skills" routerLinkActive>Register Here</a></small>
+            </div>
+          </form>
+    </div>
+</section>

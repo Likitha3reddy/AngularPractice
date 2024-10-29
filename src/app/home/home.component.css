@@ -1,0 +1,25 @@
+.container{
+    height: 200px;
+    width: 80%;
+    text-align: center;
+    border: 1px solid yellowgreen;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.blue{
+    background-color: blue;
+    color: yellow;
+}
+.red{
+    background-color: red;
+    color: yellow;
+}
+.green{
+    background-color: green;
+    color: yellow;
+}
+.container p{
+    font-size: 30px;
+}

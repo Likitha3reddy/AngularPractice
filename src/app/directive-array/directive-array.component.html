@@ -1,0 +1,66 @@
+<p>directive-array works!</p>
+
+<section>
+    <div class="container">
+        <div *ngFor="let p of persons">
+            {{p| json}}
+            <div class="card m-2 " style="width:400px" *ngIf="p.name==='Nikhila'">
+                
+                <img class="card-img-top" [src]="p.img" alt="Card image">
+                <div class="card-body">
+                  <h4 class="card-title">{{p.name | uppercase}}</h4>
+                  <p class="card-text">{{p.description | titlecase}}</p>
+                  <button class="btn m-2 p-2 btn-success">{{p.salary |currency:"INR"}}</button>
+                  <a href="/" class="btn btn-{{p.buttonColor}}">See Profile</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--
+        navbar with dropdown |child routing --header 
+    -->
+    <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+        <div class="container">
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav ms-auto">
+                  <ng-container *ngFor="let menu of navs">
+                    <!-- No Submenu -->
+                    <li class="nav-item" *ngIf="menu.sub.length === 0">
+                      <a class="nav-link ms-4" [routerLink]="menu.url" routerLinkActive="active">{{ menu.name }}</a>
+                    </li>
+                    <!-- With Submenu -->
+                    <li class="nav-item dropdown" *ngIf="menu.sub.length > 0">
+                      <a class="nav-link dropdown-toggle" [routerLink]="menu.url" role="button" data-bs-toggle="dropdown">
+                        {{ menu.name }}
+                      </a>
+                      <ul class="dropdown-menu">
+                        <ng-container *ngFor="let subnav of menu.sub">
+                          <li>
+                            <a class="dropdown-item" [routerLink]="subnav.url">{{ subnav.name }}</a>
+                          </li>
+                        </ng-container>
+                      </ul>
+                      
+                    </li>
+                  </ng-container>
+                  <li class="nav-item" >
+                    <a class="nav-link ms-4" routerLink="/home/about" routerLinkActive >Login</a>
+                  </li>
+                  <li class="nav-item" >
+                    <a class="nav-link ms-4" routerLink="/home/skills" routerLinkActive >Register</a>
+                  </li>
+                  <li class="nav-item" >
+                    <a class="nav-link ms-4 btn btn-danger" routerLink="JAVASCRIPT:VOID(0)" routerLinkActive (click)="logout()">Logout</a>
+                  </li>
+                  
+                </ul>
+            </div>
+        </div>
+        
+    </nav>
+
+    <!--To chnage the classes dynamically-->
+      
+</section>
+
+<!-- <router-outlet/> -->

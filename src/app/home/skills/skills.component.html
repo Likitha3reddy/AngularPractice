@@ -1,0 +1,62 @@
+<!--register page
+ Template driven form validation
+ Reactive form validation
+ API Integration
+ import form module at app component
+ 
+-->
+<section>
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <h4>Register</h4>
+                    </div>
+                    <div class="card-body">
+                        <form #regControl="ngForm">
+                            <!-- {{regControl.invalid}} it gets the access to the class -->
+                            <div class="mb-3">
+                                <label for="firstName" class="form-label">First Name: <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="firstName" placeholder="Enter first name" name="fname"  [(ngModel)]="students.fname" required #fname="ngModel">
+                                <!--To assign all the control to #fname  we used ngModel-->
+                                <p class="text-danger fw-bold" *ngIf="fname.touched && fname.invalid">Enter First Name</p>
+                            </div>
+                            <div class="mb-3">
+                                <label for="lastName" class="form-label">Last Name: <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="lastName" placeholder="Enter last name" name="lname" [(ngModel)]="students.lname"  required #fname="ngModel">
+                                <p class="text-danger fw-bold" *ngIf="fname.touched && fname.invalid">Enter Last Name</p>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email: <span class="text-danger">*</span></label>
+                                <input type="email" class="form-control" id="email" placeholder="Enter email" name="email"  [(ngModel)]="students.email" required #email="ngModel">
+                                <p class="text-danger fw-bold" *ngIf="email.touched && email.invalid">Enter email</p>
+                            </div>
+                            <div class="mb-3">
+                                <label for="phone" class="form-label">Phone: <span class="text-danger">*</span></label>
+                                <input type="tel" class="form-control" id="phone" placeholder="Enter phone" name="phone"  [(ngModel)]="students.phone" required #phone="ngModel">
+                                <p class="text-danger fw-bold" *ngIf="phone.touched && phone.invalid"> Enter phone Number</p>
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Password: <span class="text-danger">*</span></label>
+                                <input type="password" class="form-control" id="password" placeholder="Enter password"  name="pass" [(ngModel)]="students.pass" required #pass="ngModel">
+                                <p class="text-danger fw-bold" *ngIf="pass.touched && pass.invalid">Enter password </p>
+                            </div>
+                            <div class="mb-3">
+                                <label for="confirmPassword" class="form-label">Confirm Password: <span class="text-danger">*</span></label>
+                                <input type="password" class="form-control" id="confirmPassword" placeholder="Enter password again"  name="cpass" [(ngModel)]="students.cpass" required #cpass="ngModel">
+                                <p class="text-danger fw-bold" *ngIf="cpass.touched && cpass.invalid">Enter confirm password</p>
+                                <p class="text-danger fw-bold" *ngIf="(students.pass!=students.cpass) && pass.touched && pass.invalid">Password and confirm password should match check the passwords</p>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100" (click)="getclick()" [disabled]="regControl.invalid">Register</button>
+                            <p class="fw-bold" [ngClass]="clr">{{msg}}</p>
+                        </form>
+                    </div>
+                    <div class="card-footer text-center">
+                        <small>If you have an account <a routerLink="/home/about" routerLinkActive>Login here</a></small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
